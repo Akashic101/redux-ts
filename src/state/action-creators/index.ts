@@ -1,9 +1,12 @@
 import axios from "axios";
+import { Dispatch } from "redux";
 import { ActionType } from "../action-types";
 import { Action } from "../actions";
 
+//Now that the dispatch is of type Action the payload at success needs to be of the right type
+
 export const SearchRepositories = (term: string) => {
-	return async (dispatch: any) => {
+	return async (dispatch: Dispatch<Action>) => {
 		dispatch({
 			type: ActionType.SEARCHREPOSITORIES,
 		});
