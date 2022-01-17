@@ -1,32 +1,10 @@
+import { ActionType } from '../action-types';
+import { Action } from '../actions';
+
 interface RepositoriesState {
 	loading: boolean;
 	error: string | null;
 	data: string[];
-}
-
-interface SearchRepositoriesAction {
-	type: ActionType.SEARCHREPOSITORIES;
-}
-
-interface SearchRepositoriesSuccessAction {
-	type: ActionType.SEARCHREPOSITORIESSUCCESS;
-	payload: string[];
-}
-
-interface SearchRepositoriesErrorAction {
-	type: ActionType.SEARCHREPOSITORIESERROR;
-	payload: string;
-}
-
-type Action =
-	| SearchRepositoriesAction
-	| SearchRepositoriesSuccessAction
-	| SearchRepositoriesErrorAction;
-
-enum ActionType {
-	SEARCHREPOSITORIES = "search_repositories",
-	SEARCHREPOSITORIESSUCCESS = "search_repositories_success",
-	SEARCHREPOSITORIESERROR = "search_repositories_error",
 }
 
 const reducer = (
