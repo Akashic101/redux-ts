@@ -3,12 +3,10 @@ import { Dispatch } from "redux";
 import { ActionType } from "../action-types";
 import { Action } from "../actions";
 
-//Now that the dispatch is of type Action the payload at success needs to be of the right type
-
-export const SearchRepositories = (term: string) => {
+export const searchRepositories = (term: string) => {
 	return async (dispatch: Dispatch<Action>) => {
 		dispatch({
-			type: ActionType.SEARCHREPOSITORIES,
+			type: ActionType.SEARCH_REPOSITORIES,
 		});
 
 		try {
@@ -23,13 +21,13 @@ export const SearchRepositories = (term: string) => {
 			});
 
 			dispatch({
-				type: ActionType.SEARCHREPOSITORIESSUCCESS,
+				type: ActionType.SEARCH_REPOSITORIES_SUCCESS,
 				payload: names,
 			});
-		} catch (error) {
+		} catch (err: any) {
 			dispatch({
-				type: ActionType.SEARCHREPOSITORIESERROR,
-				payload: error.message,
+				type: ActionType.SEARCH_REPOSITORIES_ERROR,
+				payload: err.message,
 			});
 		}
 	};

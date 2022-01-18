@@ -1,5 +1,5 @@
-import { ActionType } from '../action-types';
-import { Action } from '../actions';
+import { ActionType } from "../action-types";
+import { Action } from "../actions";
 
 interface RepositoriesState {
 	loading: boolean;
@@ -7,18 +7,22 @@ interface RepositoriesState {
 	data: string[];
 }
 
+const initialState = {
+	loading: false,
+	error: null,
+	data: [],
+};
+
 const reducer = (
-	state: RepositoriesState,
+	state: RepositoriesState = initialState,
 	action: Action
 ): RepositoriesState => {
 	switch (action.type) {
-		case ActionType.SEARCHREPOSITORIES:
-			//Since reducer's return value is of type RepositoriesState,
-			//data has to be an array. Entering a number will not work anymore
+		case ActionType.SEARCH_REPOSITORIES:
 			return { loading: true, error: null, data: [] };
-		case ActionType.SEARCHREPOSITORIESSUCCESS:
+		case ActionType.SEARCH_REPOSITORIES_SUCCESS:
 			return { loading: false, error: null, data: action.payload };
-		case ActionType.SEARCHREPOSITORIESERROR:
+		case ActionType.SEARCH_REPOSITORIES_ERROR:
 			return { loading: false, error: action.payload, data: [] };
 		default:
 			return state;
